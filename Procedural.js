@@ -21,6 +21,10 @@ meta.class("Procedural.Generator",
 		var centerY = (this.cellsY / 2) | 0;
 		this._makeRoom(centerX, centerY, 10, 10, meta.random.number(0, 3));
 
+		var firstRoom = this.rooms[0];
+		this.centerX = firstRoom.minX + Math.floor((firstRoom.maxX - firstRoom.minX) / 2);
+		this.centerY = firstRoom.minY + Math.floor((firstRoom.maxY - firstRoom.minY) / 2);
+
 		for(var n = 0; n < this.numTries; n++)
 		{
 			var roomID = meta.random.number(0, this.numRooms - 1);
@@ -245,6 +249,8 @@ meta.class("Procedural.Generator",
 
 	cellsX: 0, 
 	cellsY: 0,
+	centerX: 0,
+	centerY: 0,
 
 	numTries: 3000,
 	numRooms: 0
